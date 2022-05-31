@@ -1,6 +1,6 @@
 ﻿namespace Framework.Domain;
 
-public abstract class SimpleValue<T> : Validable where T : IEquatable<T>
+public abstract class SimpleValue<T> where T : IEquatable<T>
 {
     protected SimpleValue(T value)
     {

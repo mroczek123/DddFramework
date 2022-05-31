@@ -4,7 +4,7 @@
 ///     If you get No suitable constructor was found for entity type 'X'. Add empty internal SomeConstructor(){}
 ///     Remember that child class must also recod class
 /// </summary>
-public abstract class Value : Validable
+public abstract class Value
 {
 #pragma warning disable IDE0051 // efcore workaround
     private Guid? Id { get; }

@@ -3,7 +3,7 @@
 /// <summary>
 ///     If you get No suitable constructor was found for entity type 'X'. Add empty internal SomeConstructor(){}
 /// </summary>
-public abstract class Entity : Validable
+public abstract class Entity
 {
     public Entity(DateTime? createdAt = null)
     {
@@ -16,7 +16,6 @@ public abstract class Entity : Validable
 
     protected void AddEvent(DomainEvent @event)
     {
-        ValidateFull();
         GeneratedEvents.Enqueue(@event);
     }
 }
