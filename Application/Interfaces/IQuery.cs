@@ -1,6 +1,8 @@
-﻿namespace Framework.Application;
+﻿using Framework.Domain;
 
-public interface IQuery
+namespace Framework.Application;
+
+public interface IQuery<T>
 {
-    public void Execute();
+    public IEnumerable<T> Execute();
 }

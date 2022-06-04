@@ -4,10 +4,10 @@ namespace Framework.Application.Interfaces;
 
 public interface IStorageProvider
 {
-    public IQueryable<TEntity> Objects<TEntity>() where TEntity : Entity;
-    public IQueryable<TEntity> ReadOnlyObjects<TEntity>() where TEntity : Entity;
-    public TEntity Add<TEntity>(TEntity entity) where TEntity : Entity;
-    public void Update<TEntity>(TEntity entity) where TEntity : Entity;
-    public void Delete<TEntity>(TEntity entity) where TEntity : Entity;
+    public IQueryable<TAggregateRoot> Objects<TAggregateRoot>() where TAggregateRoot : AggregateRoot;
+    public IQueryable<TAggregateRoot> ReadOnlyObjects<TAggregateRoot>() where TAggregateRoot : AggregateRoot;
+    public TAggregateRoot Add<TAggregateRoot>(TAggregateRoot entity) where TAggregateRoot : AggregateRoot;
+    public void Update<TAggregateRoot>(TAggregateRoot entity) where TAggregateRoot : AggregateRoot;
+    public void Delete<TAggregateRoot>(TAggregateRoot entity) where TAggregateRoot : AggregateRoot;
     public void Commit();
 }

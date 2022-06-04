@@ -5,17 +5,27 @@
 /// </summary>
 public abstract class Entity
 {
-    public Entity(DateTime? createdAt = null)
+#pragma warning disable IDE0051 // efcore workaround
+    private Guid? Id { get; }
+#pragma warning restore IDE0051
+
+    protected abstract bool Equals(Entity other);
+
+    public static bool operator ==(Entity one, Entity other)
     {
-        CreatedAt = createdAt != null ? (DateTime) createdAt : DateTime.Now;
+        return one.Equals(other);
     }
 
-    public Guid Id { get; }
-    public DateTime CreatedAt { get; }
-    public Queue<DomainEvent> GeneratedEvents { get; } = new(); // todo: change to internal?
-
-    protected void AddEvent(DomainEvent @event)
+    public static bool operator !=(Entity one, Entity other)
     {
-        GeneratedEvents.Enqueue(@event);
+        return !one.Equals(other);
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (ReferenceEquals(null, obj)) return false;
+        if (ReferenceEquals(this, obj)) return true;
+        if (obj.GetType() != GetType()) return false;
+        return Equals((Entity) obj);
     }
 }

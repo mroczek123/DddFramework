@@ -2,7 +2,7 @@
 
 namespace Framework.Application;
 
-public abstract class Repository<T> where T : Entity
+public abstract class Repository<T> where T : AggregateRoot
 {
     private readonly UnitOfWork _unitOfWork;
 
